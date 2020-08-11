@@ -1,10 +1,10 @@
 
 import random_poem
-
+from time import sleep
 
 
 import smtplib
- 
+PC = 0
 def sendemail(from_addr, to_addr_list, cc_addr_list,
               subject, message,
               login, password,
@@ -34,13 +34,20 @@ if poem == "yes":
   print("Do you want a poem sent to your email? (yes or no)")
   Eyn = input()
   if Eyn == "yes":
-     sendemail(from_addr = 'peombot@gmail.com', 
+    print("how many Poems?")
+    PC = input(int)
+    PC1 = int(PC)
+
+    while PC1 >= 1:
+      sendemail(from_addr = 'peombot@gmail.com', 
           to_addr_list = [input(print("please enter your email"))],
           cc_addr_list = ['theverymagentapuppy@gmail.com'], 
           subject      = 'here is your poem', 
           message      = random_poem.get_poem(), 
           login        = 'peombot@gmail.com', 
           password     = 's4UfZBfN9Swzztd')
+      PC -= 1
+      sleep(0.5)
 elif poem == "no":
   print("You are no friend of mine")
 else:

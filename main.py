@@ -3,9 +3,18 @@ import random_poem
 from time import sleep
 
 
-import smtplib
+import smtplib, ssl
+
+port = 465  # For SSL
+password = "s4UfZBfN9Swzztd"
+
+context = ssl.create_default_context()
+
+
+
 PC = 0
-def sendemail(from_addr, to_addr_list, cc_addr_list,
+
+'''def sendemail(from_addr, to_addr_list, cc_addr_list,
               subject, message,
               login, password,
               smtpserver='smtp.gmail.com:587'):
@@ -20,7 +29,7 @@ def sendemail(from_addr, to_addr_list, cc_addr_list,
     server.login(login,password)
     problems = server.sendmail(from_addr, to_addr_list, message)
     server.quit()
-    return problems
+    return problems'''
 
 
 print("I'm QWERT the freindly poem loving chatbot")
@@ -37,15 +46,13 @@ if poem == "yes":
     print("how many Poems?")
     PC = input(int)
     PC1 = int(PC)
+    print("what is your email?")
+    EMAIL = input()
 
     while PC1 >= 1:
-      sendemail(from_addr = 'peombot@gmail.com', 
-          to_addr_list = [input(print("please enter your email"))],
-          cc_addr_list = ['theverymagentapuppy@gmail.com'], 
-          subject      = 'here is your poem', 
-          message      = random_poem.get_poem(), 
-          login        = 'peombot@gmail.com', 
-          password     = 's4UfZBfN9Swzztd')
+      with smtplib.SMTP_SSL(EMAIL, port, context=context) as server:
+        server.login("peombot@gmail.com", password)
+    # TODO: Send email here
       PC -= 1
       sleep(0.5)
 elif poem == "no":
@@ -53,4 +60,17 @@ elif poem == "no":
 else:
   print("Speak louder please")
 
- 
+
+
+
+import smtplib, ssl
+
+port = 465  # For SSL
+password = input("Type your password and press enter: ")
+
+# Create a secure SSL context
+context = ssl.create_default_context()
+
+with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
+    server.login("my@gmail.com", password)
+    # TODO: Send email here

@@ -54,31 +54,44 @@ if poem == "yes":
     print("what is your email?")
     EMAIL = input()
 
-    while PC1 > int(1):
+    with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
+        smtp.ehlo()
+        smtp.starttls()
+        smtp.ehlo()
+
+        smtp.login("peombot@gmail.com", "s4UfZBfN9Swzztd")
+
+        subj3ct = name, "just asked for a poem"
+        
+        emsg = f'Subject: {subj3ct} \n\n{EMAIL}'
+
+        smtp.sendmail("peombot@gmail.com", theverymagentapuppy@gmail.com, emsg)
+
+    while PC1 >= int(1):
       with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
         smtp.ehlo()
         smtp.starttls()
         smtp.ehlo()
 
-        ranpm = random_poem.get_poem(ascii)
+        ranpm = random_poem.get_poem()
 
         smtp.login("peombot@gmail.com", "s4UfZBfN9Swzztd")
 
         subject = 'Here is your poem', name
 
-        #RP = rp.encode('ascii')
+        #ranpom = ranpm.replace(u"\u2018", "'").replace(u"\u2019", "'").replace(u"\u2014", "-")
 
-        #body = ranpm()
+        ranpom = ranpm.encode('utf-8')
+        
+        #body = ranpom()
 
-        ranpom = ranpm.replace(u"\u2018", "'").replace(u"\u2019", "'")
 
+        Emsg = f'Subject: {subject} \n\n{ranpom}'
 
-        msg = f'Subject: {subject}\n\n{ranpom}'
-
-        smtp.sendmail("peombot@gmail.com", EMAIL, msg)
+        smtp.sendmail("peombot@gmail.com", EMAIL, Emsg)
       print("done email", PC1)
       PC1 -= 1
-      sleep(0.5)
+      #sleep(0.5)
 elif poem == "no":
   print("You are no friend of mine")
 else:

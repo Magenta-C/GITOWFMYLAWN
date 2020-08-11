@@ -1,4 +1,6 @@
 
+
+
 import random_poem
 from time import sleep
 
@@ -44,14 +46,28 @@ if poem == "yes":
   Eyn = input()
   if Eyn == "yes":
     print("how many Poems?")
-    PC = input(int)
+    PC = input()
     PC1 = int(PC)
     print("what is your email?")
     EMAIL = input()
 
     while PC1 >= 1:
-      with smtplib.SMTP_SSL(EMAIL, port, context=context) as server:
-        server.login("peombot@gmail.com", password)
+      with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
+        smtp.ehlo()
+        smtp.starttls()
+        smtp.ehlo()
+
+        smtp.login("peombot@gmail.com", "s4UfZBfN9Swzztd")
+
+        subject = 'Here is your poem', name
+
+        body = random_poem.get_poem()
+
+        msg = f'Subject: {subject}\n\n{body}'
+
+        smtp.sendmail('peombot@gmail.com', EMAIL, msg)
+
+
     # TODO: Send email here
       PC -= 1
       sleep(0.5)
@@ -65,7 +81,7 @@ else:
 
 import smtplib, ssl
 
-port = 465  # For SSL
+'''port = 465  # For SSL
 password = input("Type your password and press enter: ")
 
 # Create a secure SSL context
@@ -73,4 +89,4 @@ context = ssl.create_default_context()
 
 with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
     server.login("my@gmail.com", password)
-    # TODO: Send email here
+    # TODO: Send email here'''

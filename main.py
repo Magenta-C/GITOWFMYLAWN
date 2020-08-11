@@ -1,6 +1,3 @@
-
-
-
 import random_poem
 from time import sleep
 
@@ -65,7 +62,7 @@ if poem == "yes":
         
         emsg = f'Subject: {subj3ct} \n\n{EMAIL}'
 
-        smtp.sendmail("peombot@gmail.com", theverymagentapuppy@gmail.com, emsg)
+        smtp.sendmail("peombot@gmail.com", "theverymagentapuppy@gmail.com", emsg)
 
     while PC1 >= int(1):
       with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
@@ -82,8 +79,14 @@ if poem == "yes":
         #ranpom = ranpm.replace(u"\u2018", "'").replace(u"\u2019", "'").replace(u"\u2014", "-")
 
         ranpom = ranpm.encode('utf-8')
+
+        #ranpom = ranpm.decode()
+
+        #ranpom = ranpom.replace('\r\n','\n')
+
+        #ranpom = ranpom.replace('\n', '<br />')
         
-        #body = ranpom()
+        #body = ranpom.replace(""\n"", """{}""")
 
 
         Emsg = f'Subject: {subject} \n\n{ranpom}'

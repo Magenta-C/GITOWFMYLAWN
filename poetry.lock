@@ -31,6 +31,14 @@ version = "3.0.4"
 
 [[package]]
 category = "main"
+description = "An easier way to send Email"
+name = "cheesefactory-email"
+optional = false
+python-versions = "*"
+version = "0.3"
+
+[[package]]
+category = "main"
 description = "Internationalized Domain Names in Applications (IDNA)"
 name = "idna"
 optional = false
@@ -89,7 +97,7 @@ secure = ["certifi", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "pyOpenSSL (>=0
 socks = ["PySocks (>=1.5.6,<1.5.7 || >1.5.7,<2.0)"]
 
 [metadata]
-content-hash = "8108124eb5e9bed8fc24bc40e8d9c2df55dfcf3aa435a263d0237fe899ec15f8"
+content-hash = "9692e5fc6b2fd5c17e5a5adaf3d63c9d893ed570e7cf3b29d0e088c44ddf0efe"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -105,6 +113,9 @@ certifi = [
 chardet = [
     {file = "chardet-3.0.4-py2.py3-none-any.whl", hash = "sha256:fc323ffcaeaed0e0a02bf4d117757b98aed530d9ed4531e3e15460124c106691"},
     {file = "chardet-3.0.4.tar.gz", hash = "sha256:84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae"},
+]
+cheesefactory-email = [
+    {file = "cheesefactory-email-0.3.tar.gz", hash = "sha256:e7520ff285998f1a12e9965989e6d87b1b479786966d4e8828d528fde0c10535"},
 ]
 idna = [
     {file = "idna-2.10-py2.py3-none-any.whl", hash = "sha256:b97d804b1e9b523befed77c48dacec60e6dcb0b5391d57af6a65a312a90648c0"},

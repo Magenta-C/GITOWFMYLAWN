@@ -41,7 +41,8 @@ print(name, "is a nice name")
 print("do you want a poem? (yes or no)")
 poem = input()
 if poem == "yes":
-  print("here is a poem, it reads:", random_poem.get_poem())
+  print("here is a poem, it reads:")
+  print(random_poem.get_poem())
   print("Do you want a poem sent to your email? (yes or no)")
   Eyn = input()
   if Eyn == "yes":
@@ -51,25 +52,26 @@ if poem == "yes":
     print("what is your email?")
     EMAIL = input()
 
-    while PC1 >= 1:
+    while PC1 > int(1):
       with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
         smtp.ehlo()
         smtp.starttls()
         smtp.ehlo()
 
+        rp = random_poem.get_poem(str(ascii))
+
         smtp.login("peombot@gmail.com", "s4UfZBfN9Swzztd")
 
         subject = 'Here is your poem', name
 
-        body = random_poem.get_poem()
+        RP = rp.encode('ascii')
+
+        body = RP()
 
         msg = f'Subject: {subject}\n\n{body}'
 
-        smtp.sendmail('peombot@gmail.com', EMAIL, msg)
-
-
-    # TODO: Send email here
-      PC -= 1
+        smtp.sendmail("peombot@gmail.com", EMAIL, msg)
+      PC1 -= 1
       sleep(0.5)
 elif poem == "no":
   print("You are no friend of mine")

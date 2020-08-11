@@ -1,4 +1,4 @@
-from cheesefactory-Email import Email
+
 import random_poem
 
 
@@ -23,7 +23,6 @@ def sendemail(from_addr, to_addr_list, cc_addr_list,
     return problems
 
 
-
 print("I'm QWERT the freindly poem loving chatbot")
 print("What is your name?")
 name = input()
@@ -35,19 +34,16 @@ if poem == "yes":
   print("Do you want a poem sent to your email? (yes or no)")
   Eyn = input()
   if Eyn == "yes":
-    email = Email(
-    recipients=['bob@example.com',],
-    host='localhost',
-    port='25',
-    username='Peom Bot',
-    password='s4UfZBfN9Swzztd',
-    sender='peombot@gmail.com',
-    subject='here is your poem',
-    body= random_poem.get_poem(),
-    use_tls=False,
-    attachments=['file1.txt', 'file2.txt']
-    )
+     sendemail(from_addr = 'peombot@gmail.com', 
+          to_addr_list = [input(print("please enter your email"))],
+          cc_addr_list = ['theverymagentapuppy@gmail.com'], 
+          subject      = 'here is your poem', 
+          message      = random_poem.get_poem(), 
+          login        = 'peombot@gmail.com', 
+          password     = 's4UfZBfN9Swzztd')
 elif poem == "no":
   print("You are no friend of mine")
 else:
   print("Speak louder please")
+
+ 

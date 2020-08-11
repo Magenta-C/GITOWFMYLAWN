@@ -25,7 +25,6 @@ PC = 0
     header += 'Cc: %s\n' % ','.join(cc_addr_list)
     header += 'Subject: %s\n\n' % subject
     message = header + message
- 
     server = smtplib.SMTP(smtpserver)
     server.starttls()
     server.login(login,password)
@@ -43,12 +42,15 @@ poem = input()
 if poem == "yes":
   print("here is a poem, it reads:")
   print(random_poem.get_poem())
+  print("")
   print("Do you want a poem sent to your email? (yes or no)")
   Eyn = input()
   if Eyn == "yes":
+    print("")
     print("how many Poems?")
     PC = input()
     PC1 = int(PC)
+    print("")
     print("what is your email?")
     EMAIL = input()
 
@@ -58,19 +60,23 @@ if poem == "yes":
         smtp.starttls()
         smtp.ehlo()
 
-        rp = random_poem.get_poem(str(ascii))
+        ranpm = random_poem.get_poem(ascii)
 
         smtp.login("peombot@gmail.com", "s4UfZBfN9Swzztd")
 
         subject = 'Here is your poem', name
 
-        RP = rp.encode('ascii')
+        #RP = rp.encode('ascii')
 
-        body = RP()
+        #body = ranpm()
 
-        msg = f'Subject: {subject}\n\n{body}'
+        ranpom = ranpm.replace(u"\u2018", "'").replace(u"\u2019", "'")
+
+
+        msg = f'Subject: {subject}\n\n{ranpom}'
 
         smtp.sendmail("peombot@gmail.com", EMAIL, msg)
+      print("done email", PC1)
       PC1 -= 1
       sleep(0.5)
 elif poem == "no":

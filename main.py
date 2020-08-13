@@ -1,6 +1,10 @@
+# -*- coding: utf-8 -*-
+
 import random_poem
+from random import randint
 from time import sleep
 import smtplib, ssl
+from tinydb import TinyDB, Query
 port = 465  # For SSL
 password = "s4UfZBfN9Swzztd"
 context = ssl.create_default_context()
@@ -11,13 +15,13 @@ name = input()
 print(name, "is a nice name")
 print("do you want a poem? (yes or no)")
 poem = input()
-if poem == "yes":
+if 'yes' in poem:
   print("here is a poem, it reads:")
   print(random_poem.get_poem())
   print("")
   print("Do you want a poem sent to your email? (yes or no)")
   Eyn = input()
-  if Eyn == "yes":
+  if 'yes' in Eyn:
     print("")
     print("how many Poems?")
     PC = input()
@@ -46,6 +50,15 @@ if poem == "yes":
         smtp.sendmail("peombot@gmail.com", EMAIL, Emsg)
       print("done email", PC1)
       PC1 -= 1
+    print("I made same poems for you, do you want to see them? (yes or no)") 
+    AIPOM = input()
+    if 'yes' in AIPOM:
+      db = TinyDB('AI_Poem_DataBase.json')
+      db.update({'\n': 'SHEEPDADOOP'})
+      poemAi = Query()
+      #db.search(poemAi.id == randint(0, 36))
+      ghff = db.get(poemAi.id == randint(0, 36))
+      print(ghff)
 elif poem == "no":
   print("You are no friend of mine")
 else:

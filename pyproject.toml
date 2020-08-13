@@ -8,6 +8,7 @@ authors = ["Your Name <you@example.com>"]
 python = "^3.8"
 random-poem = "^1.0.1"
 cheesefactory-email = "^0.3"
+tinydb = "^4.1.1"
 
 [tool.poetry.dev-dependencies]
 
